@@ -18,7 +18,7 @@ export const getAwardIntervals = async (): Promise<AwardIntervalsResult> => {
     order: [['year', 'ASC']],
   });
 
-  const producerWins: { [key: string]: number[] } = {}; // { "Producer Name": [year1, year2, ...] }
+  const producerWins: { [key: string]: number[] } = {}; 
 
   winningMovies.forEach(movieInstance => {
     const individualProducers = movieInstance.getIndividualProducers();
@@ -26,7 +26,7 @@ export const getAwardIntervals = async (): Promise<AwardIntervalsResult> => {
       if (!producerWins[producerName]) {
         producerWins[producerName] = [];
       }
-      // Adiciona o ano apenas se ainda não estiver na lista
+      
       if (!producerWins[producerName].includes(movieInstance.year)) {
         producerWins[producerName].push(movieInstance.year);
       }
@@ -35,7 +35,7 @@ export const getAwardIntervals = async (): Promise<AwardIntervalsResult> => {
 
   const intervals: AwardInterval[] = [];
   for (const producer in producerWins) {
-    const wins = producerWins[producer].sort((a, b) => a - b); // Garante a ordenação dos anos
+    const wins = producerWins[producer].sort((a, b) => a - b);
     if (wins.length >= 2) {
       for (let i = 0; i < wins.length - 1; i++) {
         const previousWin = wins[i];

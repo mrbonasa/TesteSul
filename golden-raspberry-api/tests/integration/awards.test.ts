@@ -1,7 +1,6 @@
-// tests/integration/awards.test.ts
 import supertest from 'supertest';
 import { FastifyInstance } from 'fastify';
-import { buildApp } from '@/app'; // Função que constrói e inicializa o app
+import { buildApp } from '@/app'; 
 import { sequelize, Movie, loadCsvDataToDatabase } from '@/database';
 
 let app: FastifyInstance;
@@ -22,7 +21,7 @@ afterAll(async () => {
 
 describe('Awards API - /producers endpoint', () => {
   it('should return the producer with the longest and shortest interval between two consecutive awards', async () => {
-    const response = await supertest(app.server).get('/producers'); // app.server é o servidor http nativo
+    const response = await supertest(app.server).get('/producers'); 
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('min');

@@ -12,11 +12,10 @@ async function start() {
     app.log.info(`Endpoint de prêmios: http://localhost:${PORT}/producers`);
   } catch (err) {
     app.log.error(err);
-    await sequelize.close(); // Fecha a conexão com o DB em caso de erro ao iniciar o servidor
+    await sequelize.close(); 
     process.exit(1);
   }
-
-  // Graceful shutdown
+  
   const signals = ['SIGINT', 'SIGTERM'];
   signals.forEach((signal) => {
     process.on(signal, async () => {

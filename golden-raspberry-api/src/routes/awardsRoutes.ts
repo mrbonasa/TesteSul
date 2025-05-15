@@ -7,7 +7,7 @@ export default async function awardsRoutes(fastify: FastifyInstance, options: Fa
       const intervals = await getAwardIntervals();
       reply.status(200).send(intervals);
     } catch (error: any) {
-      request.log.error(error); // Use o logger do Fastify
+      request.log.error(error); 
       reply.status(500).send({ message: "Erro interno do servidor", error: error.message });
     }
   });

@@ -9,7 +9,6 @@ interface MovieAttributes {
   winner: boolean;
 }
 
-
 interface MovieCreationAttributes extends Optional<MovieAttributes, 'id'> {}
 
 class Movie extends Model<MovieAttributes, MovieCreationAttributes> implements MovieAttributes {

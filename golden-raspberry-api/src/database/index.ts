@@ -8,8 +8,8 @@ const CSV_FILE_PATH = path.join(__dirname, '..', '..', 'data', 'movielist.csv');
 
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: ':memory:', // Banco de dados em memória
-  logging: false, // false para não logar SQL no console, ou console.log para logar
+  storage: ':memory:', 
+  logging: false, 
 });
 
 const MovieModel = initMovieModel(sequelize);
@@ -25,8 +25,7 @@ function parseProducersString(producersString: string | undefined): string[] {
 
 export const loadCsvDataToDatabase = async (): Promise<void> => {
   return new Promise((resolve, reject) => {
-    //const moviesToInsert: Array<Omit<InstanceType<typeof Movie>, 'id'>> = [];
-
+    
     type MovieInput = Omit<Movie['_creationAttributes'], 'id'>;
     const moviesToInsert: MovieInput[] = [];
 
@@ -36,18 +35,17 @@ export const loadCsvDataToDatabase = async (): Promise<void> => {
       .pipe(csv({ separator: ';' }))
       .on('data', (row: any) => {
         if (firstRow && row.year && row.year.toLowerCase() === 'year') {
-          firstRow = false; // Ignora o cabeçalho
+          firstRow = false; 
           return;
         }
 
         const year = parseInt(row.year, 10);
         const title = row.title;
         const studios = row.studios;
-        const producers = row.producers; // String original
+        const producers = row.producers; 
         const winner = (row.winner && row.winner.toLowerCase() === 'yes');
 
-        if (isNaN(year) || !title || !studios || !producers) {
-          // console.warn(`Linha inválida ou incompleta no CSV, pulando: ${JSON.stringify(row)}`);
+        if (isNaN(year) || !title || !studios || !producers) {          
           return;
         }
         
