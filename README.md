@@ -19,3 +19,8 @@
 Para iniciar o servidor em modo de desenvolvimento
 ```bash
 npm run dev
+
+
+Para rodar os tests
+```bash
+npm test
