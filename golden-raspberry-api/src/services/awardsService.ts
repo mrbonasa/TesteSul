@@ -1,5 +1,4 @@
-// src/services/awardsService.ts
-import { Movie } from '@/database'; // Usando alias do tsconfig
+import { Movie } from '../database';
 
 interface AwardInterval {
   producer: string;

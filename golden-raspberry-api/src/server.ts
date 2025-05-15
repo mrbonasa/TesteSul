@@ -1,6 +1,5 @@
-// src/server.ts
-import { buildApp } from '@/app';
-import { sequelize } from '@/database'; 
+import { buildApp } from './app';
+import { sequelize } from './database'; 
 
 const PORT = process.env.PORT || 3000;
 

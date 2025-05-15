@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyPluginOptions, FastifyRequest, FastifyReply } from 'fastify';
-import { getAwardIntervals } from '@/services/awardsService';
+import { getAwardIntervals } from '../services/awardsService';
 
 export default async function awardsRoutes(fastify: FastifyInstance, options: FastifyPluginOptions) {
   fastify.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
